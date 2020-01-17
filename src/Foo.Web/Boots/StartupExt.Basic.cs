@@ -19,6 +19,8 @@ namespace Foo.Web.Boots
                 app.UseDeveloperExceptionPage();
             }
 
+            UseFooStaticFiles(app);
+
             app.UseMvc();
             
             app.Run(async (context) =>
