@@ -20,7 +20,7 @@ namespace Foo.Web.Boots
             var mvcBuilder = services.AddMvc(opts =>
             {
                 //Here it is being added globally. Could be used as attribute on selected controllers instead
-                opts.Filters.Add(new MyJSONExceptionFilter());
+                //opts.Filters.Add(new MyJSONExceptionFilter());
             });
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

@@ -27,7 +27,7 @@ namespace Foo.Web.Api
         {
             var msg = "GetEx FROM " + this.GetType().Name + " " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             _logger.LogInformation(">> " + msg);
-            var applicationEx = new ApplicationException("shit happens!");
+            var applicationEx = new ApplicationException("shit happens! 一个异常。");
             throw applicationEx;
         }
     }
