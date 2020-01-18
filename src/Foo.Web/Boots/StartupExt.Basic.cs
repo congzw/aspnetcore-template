@@ -9,20 +9,18 @@ namespace Foo.Web.Boots
     {
         public static void AddBasic(this IServiceCollection services)
         {
-            services.AddMvcCore();
+            services.AddMvcCore()
+                .AddJsonFormatters() //fix: StatusCode 406 (Not Acceptable) in ASP.NET Core
+                ; 
         }
 
         public static void UseBasic(this IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            UseFooStaticFiles(app);
+            UseMyErrorHandling(app);
+            UseMyStaticFiles(app);
 
             app.UseMvc();
-            
+
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
