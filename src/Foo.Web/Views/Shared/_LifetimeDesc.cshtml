@@ -1,0 +1,20 @@
+﻿@using Foo.Common
+@using Foo.Web._Demos.Lifetimes
+@{
+    var singletonDiff = showDiff<ISingletonDesc>();
+    var transientDiff = showDiff<ITransientDesc>();
+    var scopedDiff = showDiff<IScopedDesc>();
+}
+@functions
+{
+    public string showDiff<T>() where T : ILifetimeDesc
+    {
+        var scoped = ServiceLocator.Current.GetService<T>();
+        var scoped2 = ServiceLocator.Current.GetService<T>();
+        var scopedDiff = LifetimeDesc.ShowDiff(scoped, scoped2);
+        return scopedDiff;
+    }
+}
+<p>singletonDiff: @singletonDiff</p>
+<p>scopedDiff: @scopedDiff</p>
+<p>transientDiff: @transientDiff</p>
