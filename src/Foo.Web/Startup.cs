@@ -10,11 +10,15 @@ namespace Foo.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddBasic();
+            services.AddMyServiceLocator();
+
+            services.AddFoo();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseBasic(env);
+            app.UseMyServiceLocator();
         }
     }
 }

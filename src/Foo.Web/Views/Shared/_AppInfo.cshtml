@@ -1,0 +1,7 @@
+﻿@using Foo.Common
+@using Foo.Web._Demos.AppInfos
+@{
+    var appInfoService = ServiceLocator.Current.GetService<IAppInfoService>();
+    var appInfo = appInfoService.GetAppInfo();
+}
+<span>&copy; @appInfo.AppName - @appInfo.Version</span>

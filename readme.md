@@ -2,6 +2,7 @@
 
 ## change list
 
+- 20200221 add boots logic for ServiceLocator
 - 20200117 add static files
 - 20200117 add api
 - 20200117 init
