@@ -1,22 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Foo.Web.Boots
 {
-    public static partial class StartupExt
+    public static partial class BootExt
     {
-        public static void AddBasic(this IServiceCollection services)
+        public static void AddMyMvc(this IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
             var mvcBuilder = services.AddMvc(opts =>
             {
                 //Here it is being added globally. Could be used as attribute on selected controllers instead
@@ -25,12 +16,8 @@ namespace Foo.Web.Boots
             mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        public static void UseBasic(this IApplicationBuilder app, IHostingEnvironment env)
+        public static void UseMyMvc(this IApplicationBuilder app)
         {
-            UseMyErrorHandling(app,env);
-            UseMyStaticFiles(app);
-
-            app.UseCookiePolicy();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

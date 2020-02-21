@@ -8,9 +8,15 @@ namespace Foo.Web.Boots
 {
     public static partial class StartupExt
     {
-        internal static void UseMyStaticFiles(this IApplicationBuilder app)
+        public static void UseMyStaticFiles(this IApplicationBuilder app)
         {
-            app.UseDefaultFiles(new DefaultFilesOptions() { DefaultFileNames = new List<string>() { "index.html" } });
+            app.UseDefaultFiles(new DefaultFilesOptions()
+            {
+                DefaultFileNames = new List<string>()
+                {
+                    "index.html"
+                }
+            });
 
             app.UseStaticFiles(new StaticFileOptions
             {

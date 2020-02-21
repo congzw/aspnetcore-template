@@ -1,7 +1,7 @@
 ﻿using Foo.Web.Boots;
+using Foo.Web._Demos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Foo.Web
@@ -10,7 +10,8 @@ namespace Foo.Web
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddBasic();
+            services.AddMyCookiePolicy();
+            services.AddMyMvc();
 
             services.AddMyServiceLocator();
             services.AddMyLogging(true);
@@ -20,7 +21,10 @@ namespace Foo.Web
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseBasic(env);
+            app.UseMyErrorHandling(env);
+            app.UseCookiePolicy();
+            app.UseMyStaticFiles();
+            app.UseMyMvc();
 
             app.UseMyServiceLocator();
             app.UseMyLogging();

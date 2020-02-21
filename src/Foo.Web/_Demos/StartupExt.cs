@@ -1,7 +1,7 @@
 ﻿using Foo.Web._Demos.AppInfos;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Foo.Web.Boots
+namespace Foo.Web._Demos
 {
     public static partial class StartupExt
     {

@@ -12,6 +12,25 @@ using Microsoft.Extensions.Logging;
 
 namespace Foo.Web.Boots
 {
+    public partial class StartupExt
+    {
+        public static void UseMyErrorHandling(this IApplicationBuilder app, IHostingEnvironment env)
+        {
+            //return html for pages
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            //return json for apis
+            app.UseMyExceptionMiddleware();
+        }
+    }
+
     public static class MyExceptionMiddlewareExtensions
     {
         ////how to use
@@ -139,8 +158,6 @@ namespace Foo.Web.Boots
         public string Message { get; set; }
         public object Data { get; set; }
     }
-
-
     public class OptionsCheck
     {
         public static bool ShouldJsonThrow(MyExceptionHandleJsonOptions options, bool isDev)
@@ -168,7 +185,6 @@ namespace Foo.Web.Boots
             return false;
         }
     }
-
     [Flags]
     public enum MyExceptionHandleJsonOptions
     {

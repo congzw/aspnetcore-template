@@ -263,3 +263,5 @@ __pycache__/
 
 # hide logs
 **/logs/*.log
+# all Thumbs.db
+Thumbs.db
