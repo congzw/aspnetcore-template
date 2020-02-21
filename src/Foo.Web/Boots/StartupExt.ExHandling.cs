@@ -5,7 +5,7 @@ namespace Foo.Web.Boots
 {
     public partial class StartupExt
     {
-        private static void UseMyErrorHandling(IApplicationBuilder app, IHostingEnvironment env)
+        internal static void UseMyErrorHandling(this IApplicationBuilder app, IHostingEnvironment env)
         {
             //return html for pages
             if (env.IsDevelopment())
