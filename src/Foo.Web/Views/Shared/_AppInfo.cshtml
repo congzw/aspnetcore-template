@@ -1,7 +1,13 @@
 ﻿@using Foo.Common
+@using Foo.Common.Logs
 @using Foo.Web._Demos.AppInfos
+@using Microsoft.Extensions.Logging
 @{
     var appInfoService = ServiceLocator.Current.GetService<IAppInfoService>();
     var appInfo = appInfoService.GetAppInfo();
+
+    var logger = ServiceLocator.Current.GetService<ILogger>();
+    logger.LogInformation("invoke by _AppInfo.cshtml");
+    LogHelper.Instance.Info("invoke by _AppInfo.cshtml from LogHelper");
 }
 <span>&copy; @appInfo.AppName - @appInfo.Version</span>
